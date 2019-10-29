@@ -13,6 +13,15 @@ One more thing. The speed limit has been increased from 30 mph to 100 mph. Get r
 
 ### Description
 
+In this project, I implemented a PID controller for the steering of the car along the track. I modified the three parameters Kp, Ki & Kd by hand until I got a satisfying result. I finally choose Kp = 0.1, Ki = 0.03 & Kd = 1.2.
+We can try to intelligently tune the parameters knowing how they will affect our system:
+ - Kp is the proportional gain and is multiplied bu the error.A high proportional gain results in a large change in the output for a given change in the error. If the proportional gain is too high, the system can become unstable. In contrast, a small gain results in a small output response to a large input error, and a less responsive or less sensitive controller.
+ - Ki is the integral gain and is multiplied by the accumulated error. The integral term accelerates the movement of the process towards setpoint and eliminates the residual steady-state error that occurs with a pure proportional controller. However, since the integral term responds to accumulated errors from the past, it can cause the present value to overshoot the setpoint value
+ - Kd is the derivative gain and is multiplied by the the derivative of the error. Derivative action predicts system behavior and thus improves settling time and stability of the system.
+ 
+Finally, I tried to implement a controller for the car's speed but I couldn't find a good set of parameters so I stopped for the moment.
+In conclusion, some improvements are needed if we want good regulation without too many oscillations. Perhaps one of the possibilities would be to implement the [SIMC method](http://folk.ntnu.no/skoge/publications/2012/skogestad-improved-simc-pid/PIDbook-chapter5.pdf) to smooth our system's curve.
+
 ### Files description
 
 The script files are in the `src` folder. All the other files or folders are there to ensure we can run the program successfully. 
